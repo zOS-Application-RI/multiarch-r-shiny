@@ -49,3 +49,4 @@ sudo chown -R shiny.shiny /var/lib/shiny-server
 sudo chown shiny /var/log/shiny-server
 sudo mkdir -p /etc/shiny-server
 sudo chown -R shiny.shiny /etc/shiny-server
+sudo cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
