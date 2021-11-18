@@ -11,7 +11,7 @@ ENV LC_ALL=en_US.UTF-8 \
     LANG=en_US.UTF-8 \
     CRAN=${CRAN:-https://cran.rstudio.com}
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3 cmake gcc g++ git r-base-dev 
 
 
 ## Don't require a password for sudo
