@@ -1,8 +1,8 @@
 # FROM ashish1981/multiarch-r-plugins
 FROM ashish1981/r-base
 ARG CRAN
-SHELL ["/bin/bash", "-c"]
-RUN source /root/setenv.sh 
+# SHELL ["/bin/bash", "-c"]
+# RUN source /root/setenv.sh 
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && locale-gen en_US.utf8 \
     && /usr/sbin/update-locale LANG=en_US.UTF-8
