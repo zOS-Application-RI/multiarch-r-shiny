@@ -1,4 +1,5 @@
-FROM ashish1981/multiarch-r-plugins
+# FROM ashish1981/multiarch-r-plugins
+FROM ashish1981/r-base
 ARG CRAN
 SHELL ["/bin/bash", "-c"]
 RUN source /root/setenv.sh 
@@ -12,7 +13,7 @@ ENV LC_ALL=en_US.UTF-8 \
     CRAN=${CRAN:-https://cran.rstudio.com}
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3 cmake gcc g++ git r-base-dev 
-
+RUN R -e \"install.packages('shiny', repos='https://cran.rstudio.com/')\"
 
 ## Don't require a password for sudo
 RUN sed -i 's/^\(%sudo.*\)ALL$/\1NOPASSWD:ALL/' /etc/sudoers
