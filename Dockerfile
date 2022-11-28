@@ -14,7 +14,7 @@ ENV LC_ALL=en_US.UTF-8 \
     CRAN=${CRAN:-https://cran.rstudio.com} 
       
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3 cmake gcc g++ git r-base-dev locales
+RUN DEBIAN_FRONTEND=noninteractive apt update && apt install -y python3 cmake gcc g++ git r-base-dev locales
 RUN R -e \"install.packages('shiny', repos='https://cran.rstudio.com/')\"
 # Set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
