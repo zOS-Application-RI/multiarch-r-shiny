@@ -3,17 +3,22 @@ FROM ashish1981/r-base
 ARG CRAN
 # SHELL ["/bin/bash", "-c"]
 # RUN source /root/setenv.sh 
-RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
-    && locale-gen en_US.utf8 \
-    && /usr/sbin/update-locale LANG=en_US.UTF-8
+# RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+#     && locale-gen en_US.utf8 \
+#     && /usr/sbin/update-locale LANG=en_US.UTF-8
 
 ENV LC_ALL=en_US.UTF-8 \
     LC_CTYPE=en_US.UTF-8 \
     LANG=en_US.UTF-8 \
-    CRAN=${CRAN:-https://cran.rstudio.com}
+    LANGUAGE=en_US:en \
+    CRAN=${CRAN:-https://cran.rstudio.com} 
+      
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3 cmake gcc g++ git r-base-dev 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3 cmake gcc g++ git r-base-dev locales
 RUN R -e \"install.packages('shiny', repos='https://cran.rstudio.com/')\"
+# Set the locale
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
+    locale-gen
 
 ## Don't require a password for sudo
 RUN sed -i 's/^\(%sudo.*\)ALL$/\1NOPASSWD:ALL/' /etc/sudoers
