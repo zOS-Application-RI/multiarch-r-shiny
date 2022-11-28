@@ -33,9 +33,9 @@ verify_checksum () {
 
 download_node () {
   case $(uname -m) in
-  s390x ) export archt=s390x && export NODE_SHA256=5f9b580fc0d9cb412c0482ede23de2c68063942fecd44565cc0e509ed06b4d02
+  s390x ) export archt=s390x && export NODE_SHA256=509b676199003fed89b1aee384fec3ab8b2906b4540784c032179c1b49b9c3c9
   ;;
-  x86_64 ) export archt=x64 && export NODE_SHA256=80fc80cdb3d829ea4d752c2e52067a426f6c4fd629ecca5a858d268af8d5ec7e
+  x86_64 ) export archt=x64 && export NODE_SHA256=de2c694e7081c37022817d27a65b02f69ecf4c49699d65585e8e24431b7bc920
   ;;
   ppc64le ) export archt=ppc64le
   ;;
