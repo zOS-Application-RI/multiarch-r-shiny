@@ -15,7 +15,7 @@ ENV LC_ALL=en_US.UTF-8 \
       
 
 RUN DEBIAN_FRONTEND=noninteractive apt update && apt install -y python3 cmake gcc g++ git r-base-dev locales
-RUN R -e \"install.packages('shiny', repos='https://cran.rstudio.com/')\"
+RUN install2.r --error shiny
 # Set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen
